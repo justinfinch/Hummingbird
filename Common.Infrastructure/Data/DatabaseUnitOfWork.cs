@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using System.Transactions;
-using Common.Security;
+using Common.Core.Security;
 
 namespace Common.Infrastructure.Data
 {

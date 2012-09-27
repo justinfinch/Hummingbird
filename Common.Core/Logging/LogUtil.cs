@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Common.Logging
+namespace Common.Core.Logging
 {
     public class LogUtil
     {
-
         public static string BuildExceptionMessage(Exception ex)
         {
 

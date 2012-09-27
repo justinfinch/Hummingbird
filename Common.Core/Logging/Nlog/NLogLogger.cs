@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Common.Logging.NLog
+namespace Common.Core.Logging.NLog
 {
     public class NLogLogger : ILogger
     {
