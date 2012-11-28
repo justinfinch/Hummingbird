@@ -25,12 +25,12 @@ namespace Common.Domain
 
         public static bool operator ==(EntityObject<TKey> a, EntityObject<TKey> b)
         {
-            return Equals(a, b);
+            return a.Equals(b);
         }
 
         public static bool operator !=(EntityObject<TKey> a, EntityObject<TKey> b)
         {
-            return Equals(a, b);
+            return !a.Equals(b);
         }
 
         public override bool  Equals(object other)
@@ -47,6 +47,7 @@ namespace Common.Domain
 
         public override int GetHashCode()
         {
+            //TODO: Research and implement correctly
             return base.GetHashCode();
         }
     }
