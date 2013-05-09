@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{32EBE4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hummingbird.EntityFramework", "Hummingbird.EntityFramework\Hummingbird.EntityFramework.csproj", "{3F1FA30F-DB81-497A-BB06-6AAB0BA739E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{20CD8BE3-0BAB-4F8E-A079-9F4DB5D56095}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Api", "Northwind.Api\Northwind.Api.csproj", "{44830564-BE88-4020-B859-AF4ED3C5AD82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind", "Northwind\Northwind.csproj", "{61E2C0E1-805C-4129-888D-87E46EA333EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +32,20 @@ Global
 		{3F1FA30F-DB81-497A-BB06-6AAB0BA739E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F1FA30F-DB81-497A-BB06-6AAB0BA739E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F1FA30F-DB81-497A-BB06-6AAB0BA739E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44830564-BE88-4020-B859-AF4ED3C5AD82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44830564-BE88-4020-B859-AF4ED3C5AD82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44830564-BE88-4020-B859-AF4ED3C5AD82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44830564-BE88-4020-B859-AF4ED3C5AD82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E2C0E1-805C-4129-888D-87E46EA333EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E2C0E1-805C-4129-888D-87E46EA333EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E2C0E1-805C-4129-888D-87E46EA333EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E2C0E1-805C-4129-888D-87E46EA333EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44830564-BE88-4020-B859-AF4ED3C5AD82} = {20CD8BE3-0BAB-4F8E-A079-9F4DB5D56095}
+		{61E2C0E1-805C-4129-888D-87E46EA333EF} = {20CD8BE3-0BAB-4F8E-A079-9F4DB5D56095}
 	EndGlobalSection
 EndGlobal

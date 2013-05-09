@@ -8,7 +8,7 @@ using Hummingbird.Data;
 
 namespace Hummingbird.EntityFramework
 {
-    public class DatabaseProvider<T, U> : IDatabaseProvider<T>
+    public class DataProvider<T, U> : IDataProvider<T>
         where T : class, IObjectWithState, IDataRow, new()
         where U : DbContext
     {
@@ -21,9 +21,14 @@ namespace Hummingbird.EntityFramework
             }
         }
 
-        public DatabaseProvider(U dbContext)
+        public DataProvider(U dbContext)
         {
             _context = dbContext;
+        }
+
+        public IQueryable<T> Query()
+        {
+            return Context.Set<T>();
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> query, params Expression<Func<T, object>>[] includes)
@@ -35,7 +40,7 @@ namespace Hummingbird.EntityFramework
                 results = includes.Aggregate(results,
                     (current, include) => current.Include(include));
             }
-
+            
             return results.ToList();
         }
 
