@@ -6,15 +6,19 @@
       <HashCode>AAAAAAAAAAAAAAhAAAAAgAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orders\Data\CustomerRepository.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_customerCacheProvider" />
+      <Field Name="_customerDataProvider" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Hummingbird.EntityFramework.DataProvider&lt;T, U&gt;">
-    <Position X="2" Y="8" Width="3" />
+    <Position X="1" Y="8" Width="3" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Hummingbird.Data.CacheProvider&lt;T&gt;">
-    <Position X="5.5" Y="7" Width="2.25" />
+    <Position X="6" Y="7.25" Width="2.25" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
@@ -26,11 +30,11 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Hummingbird.Data.ICacheProvider&lt;T&gt;">
-    <Position X="5.5" Y="5.25" Width="2.5" />
+    <Position X="6" Y="5.25" Width="2.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="Hummingbird.Data.IDataProvider&lt;T&gt;">
-    <Position X="2" Y="5.25" Width="3" />
+    <Position X="1" Y="5.25" Width="3" />
     <TypeIdentifier />
   </Interface>
   <Font Name="Segoe UI" Size="9" />
