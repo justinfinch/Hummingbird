@@ -1,6 +1,6 @@
 ﻿using System;
 using Hummingbird.Data;
-using Hummingbird.Security;
+using System.Threading;
 
 namespace Hummingbird.Domain
 {
@@ -12,7 +12,6 @@ namespace Hummingbird.Domain
         public string CreatedBy { get; protected set; }
         public string LastModifiedBy { get; protected set; }
         public byte[] Version { get; protected set; }
-
         public ObjectState CurrentObjectState { get; protected set; }
 
         protected Entity()
@@ -20,23 +19,23 @@ namespace Hummingbird.Domain
             CurrentObjectState = ObjectState.Unchanged;
         }
 
-        public void WasModifiedBy(ISecurityContext securityContext)
+        public void WasModifiedBy()
         {
             if (CurrentObjectState == ObjectState.Unchanged)
             {
                 CurrentObjectState = ObjectState.Modified;
                 LastModifiedDate = DateTime.Now;
-                LastModifiedBy = "system";
+                LastModifiedBy = Thread.CurrentPrincipal.Identity.Name;
             }
         }
 
-        public void WasCreatedBy(ISecurityContext securityContext)
+        public void WasCreatedBy()
         {
             CurrentObjectState = ObjectState.Added;
             CreatedDate = DateTime.Now;
             LastModifiedDate = DateTime.Now;
-            CreatedBy = "system";
-            LastModifiedBy = "system";
+            CreatedBy = Thread.CurrentPrincipal.Identity.Name;
+            LastModifiedBy = Thread.CurrentPrincipal.Identity.Name;
         }
 
         public bool HasKey()

@@ -1,5 +1,4 @@
 ﻿using System;
-using Hummingbird.Security;
 
 namespace Hummingbird.Data
 {
@@ -12,7 +11,7 @@ namespace Hummingbird.Data
         string CreatedBy { get; }
         string LastModifiedBy { get; }
 
-        void WasModifiedBy(ISecurityContext securityContext);
-        void WasCreatedBy(ISecurityContext securityContext);
+        void WasModifiedBy();
+        void WasCreatedBy();
     }
 }

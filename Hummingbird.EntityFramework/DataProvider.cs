@@ -12,7 +12,7 @@ namespace Hummingbird.EntityFramework
         where T : class, IObjectWithState, IDataRow, new()
         where U : DbContext
     {
-        private readonly U _context;
+        protected U _context;
         public U Context
         {
             get
@@ -26,22 +26,30 @@ namespace Hummingbird.EntityFramework
             _context = dbContext;
         }
 
-        public IQueryable<T> Query()
-        {
-            return Context.Set<T>();
-        }
-
         public IEnumerable<T> Find(Expression<Func<T, bool>> query, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> results = _context.Set<T>().Where(query);
 
-            if (includes != null)
+            if (includes != null && includes.Length > 0)
             {
                 results = includes.Aggregate(results,
                     (current, include) => current.Include(include));
             }
-            
+
             return results.ToList();
+        }
+
+        public IQueryable<T> Query(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> set = _context.Set<T>();
+
+            if (includes != null && includes.Length > 0)
+            {
+                set = includes.Aggregate(set,
+                    (current, include) => current.Include(include));
+            }
+
+            return set;
         }
 
         public void Delete(T item)
@@ -50,13 +58,12 @@ namespace Hummingbird.EntityFramework
             _context.SaveChanges();
         }
 
-        //Note: If you want cascade deleting you need to ensure your navigation properties are loaded
         public void Delete(Expression<Func<T, bool>> query)
         {
             Find(query).ToList().ForEach(Delete);
         }
 
-        public T InsertOrUpdateGraph(T item)
+        public T InsertOrUpdate(T item)
         {
             _context.Set<T>().Add(item);
             _context.ApplyStateChanges();
@@ -64,25 +71,16 @@ namespace Hummingbird.EntityFramework
             return item;
         }
 
-
-        public bool Exists(Expression<Func<T, bool>> query)
+        public IEnumerable<T> InsertOrUpdate(IEnumerable<T> items)
         {
-            return _context.Set<T>().Any(query);
-        }
+            foreach (var item in items)
+            {
+                _context.Set<T>().Add(item);
+            }
 
-        [Obsolete("Use InsertOrUpdateGraph instead!!")]
-        public T InsertOrUpdate(T item)
-        {
-            if (!item.HasKey())
-            {
-                _context.Entry(item).State = EntityState.Added;
-            }
-            else
-            {
-                _context.Entry(item).State = EntityState.Modified;
-            }
+            _context.ApplyStateChanges();
             _context.SaveChanges();
-            return item;
+            return items;
         }
 
         public void Dispose()
@@ -91,3 +89,4 @@ namespace Hummingbird.EntityFramework
         }
     }
 }
+
