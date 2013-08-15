@@ -15,10 +15,12 @@ namespace Northwind.WebApi.Controllers
     public class CustomerController : ApiController
     {
         private readonly ICustomerRepository _customerRepo;
+        private readonly IOrderRepository _orderRepo;
 
-        public CustomerController(ICustomerRepository customerRepo)
+        public CustomerController(ICustomerRepository customerRepo, IOrderRepository orderRepo)
         {
             _customerRepo = customerRepo;
+            _orderRepo = orderRepo;
         }
 
         [GET("")]

@@ -9,5 +9,6 @@ namespace Northwind.Orders.Domain
 {
     public class Order : Entity<int?>
     {
+
     }
 }

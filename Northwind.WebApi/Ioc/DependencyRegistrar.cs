@@ -1,41 +1,41 @@
-﻿using Ninject.Modules;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ninject.Web.Common;
 using Hummingbird.Data;
 using Hummingbird.EntityFramework;
 using Northwind.Orders.DatabaseAccess;
-using Ninject.Web.Common;
 using Northwind.Orders.Domain;
 using Northwind.Orders.Data;
+using Autofac;
 
 namespace Northwind.WebApi.Ioc
 {
-    public class DependencyRegistrar : NinjectModule
+    public class DependencyRegistrar : Module
     {
-
-        public override void Load()
+        
+        protected override void Load(ContainerBuilder builder)
         {
             //Bind Contexts - ensure these are only created once per request
-            Bind<OrdersContext>().ToSelf().InRequestScope();
+            builder.RegisterType<OrdersContext>().InstancePerLifetimeScope();
 
             //Bind domain objects to a context to create data providers
-            BindToContext<Customer, OrdersContext>();
+            RegisterToContext<Customer, OrdersContext>(builder);
+            RegisterToContext<Order, OrdersContext>(builder);
 
             //Bind repositories
-            Bind<ICustomerRepository>().To<CustomerRepository>().InRequestScope();
+            builder.RegisterType<CustomerRepository>().As<ICustomerRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<OrderRepository>().As<IOrderRepository>().InstancePerLifetimeScope();
         }
 
-        //TODO: Move this into an EF Ninject dll
-        protected void BindToContext<T, TContext>()
+        //TODO: Move this into an EF Autofac dll
+        protected void RegisterToContext<T, TContext>(ContainerBuilder builder)
             where T : class, IObjectWithState, IDataRow, new()
             where TContext : DbContext
         {
-            Bind<IDataProvider<T>>().To<DataProvider<T, TContext>>().InRequestScope();
+            builder.RegisterType<DataProvider<T, TContext>>().As<IDataProvider<T>>().InstancePerLifetimeScope();
         }
     }
 }

@@ -15,12 +15,19 @@ namespace Northwind.Orders.DatabaseAccess
     public class OrdersContext : NorthwindBaseContext<OrdersContext>
     {
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        public OrdersContext()
+        {
+
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Configurations.Add(new CustomerMap());
+            modelBuilder.Configurations.Add(new OrderMap());
         }
 
 

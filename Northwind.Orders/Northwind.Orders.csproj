@@ -47,9 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseAccess\CustomerMap.cs" />
+    <Compile Include="DatabaseAccess\OrderMap.cs" />
     <Compile Include="DatabaseAccess\OrdersContext.cs" />
     <Compile Include="Data\CustomerRepository.cs" />
     <Compile Include="Data\ICustomerRepository.cs" />
+    <Compile Include="Data\IOrderRepository.cs" />
+    <Compile Include="Data\OrderRepository.cs" />
     <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderDetail.cs" />
