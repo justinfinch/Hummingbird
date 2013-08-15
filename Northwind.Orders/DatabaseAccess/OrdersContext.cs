@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Northwind.Orders.Domain;
 using Northwind.DatabaseAccess;
+using Hummingbird.EntityFramework;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Northwind.Orders.DatabaseAccess
 {

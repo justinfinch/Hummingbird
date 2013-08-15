@@ -23,7 +23,7 @@ namespace Northwind.Orders.Data
 
         public IEnumerable<Customer> GetTop(int count)
         {
-            return _customerDataProvider.Find(c => c.Id == c.Id).Take(count);
+            return _customerDataProvider.Query().Take(count).ToList();
         }
     }
 }
