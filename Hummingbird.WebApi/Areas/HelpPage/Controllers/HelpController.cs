@@ -1,9 +1,9 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using Hummingbird.WebApi.Areas.HelpPage.Models;
+using Northwind.WebApi.Areas.HelpPage.Models;
 
-namespace Hummingbird.WebApi.Areas.HelpPage.Controllers
+namespace Northwind.WebApi.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

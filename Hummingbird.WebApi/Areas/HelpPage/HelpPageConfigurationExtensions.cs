@@ -7,9 +7,9 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Hummingbird.WebApi.Areas.HelpPage.Models;
+using Northwind.WebApi.Areas.HelpPage.Models;
 
-namespace Hummingbird.WebApi.Areas.HelpPage
+namespace Northwind.WebApi.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

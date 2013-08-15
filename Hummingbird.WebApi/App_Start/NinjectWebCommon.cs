@@ -1,7 +1,7 @@
-[assembly: WebActivator.PreApplicationStartMethod(typeof(Hummingbird.WebApi.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(Hummingbird.WebApi.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(Northwind.WebApi.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(Northwind.WebApi.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Hummingbird.WebApi.App_Start
+namespace Northwind.WebApi.App_Start
 {
     using System;
     using System.Web;
@@ -10,7 +10,7 @@ namespace Hummingbird.WebApi.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Hummingbird.WebApi.Ioc;
+    using Northwind.WebApi.Ioc;
     using System.Web.Http;
 
     public static class NinjectWebCommon 

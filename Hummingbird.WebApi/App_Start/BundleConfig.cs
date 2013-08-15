@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Hummingbird.WebApi
+namespace Northwind.WebApi
 {
     public class BundleConfig
     {

@@ -13,7 +13,7 @@ using Ninject.Web.Common;
 using Northwind.Orders.Domain;
 using Northwind.Orders.Data;
 
-namespace Hummingbird.WebApi.Ioc
+namespace Northwind.WebApi.Ioc
 {
     public class DependencyRegistrar : NinjectModule
     {

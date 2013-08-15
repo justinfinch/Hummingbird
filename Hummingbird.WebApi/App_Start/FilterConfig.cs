@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Hummingbird.WebApi
+namespace Northwind.WebApi
 {
     public class FilterConfig
     {

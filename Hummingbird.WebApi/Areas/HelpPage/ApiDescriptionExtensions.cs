@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace Hummingbird.WebApi.Areas.HelpPage
+namespace Northwind.WebApi.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

@@ -5,7 +5,7 @@ using System.Web.Http.Dependencies;
 using Ninject;
 using Ninject.Syntax;
 
-namespace Hummingbird.WebApi.Ioc
+namespace Northwind.WebApi.Ioc
 {
     public class NinjectDependencyScope : IDependencyScope
     {

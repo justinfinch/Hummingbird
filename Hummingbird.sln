@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{20CD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind", "Northwind\Northwind.csproj", "{61E2C0E1-805C-4129-888D-87E46EA333EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hummingbird.WebApi", "Hummingbird.WebApi\Hummingbird.WebApi.csproj", "{6A5CA8EE-4A84-46E8-8FD4-DA1C7600FA4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.WebApi", "Hummingbird.WebApi\Northwind.WebApi.csproj", "{6A5CA8EE-4A84-46E8-8FD4-DA1C7600FA4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Orders", "Northwind.Orders\Northwind.Orders.csproj", "{10EFD155-2E53-4619-B34E-BD10CB9BE83A}"
 EndProject

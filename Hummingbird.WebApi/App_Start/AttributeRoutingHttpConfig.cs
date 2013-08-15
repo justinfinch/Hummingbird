@@ -1,9 +1,9 @@
 using System.Web.Http;
 using AttributeRouting.Web.Http.WebHost;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(Hummingbird.WebApi.AttributeRoutingHttpConfig), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(Northwind.WebApi.AttributeRoutingHttpConfig), "Start")]
 
-namespace Hummingbird.WebApi 
+namespace Northwind.WebApi 
 {
     public static class AttributeRoutingHttpConfig
 	{

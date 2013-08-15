@@ -9,7 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Hummingbird.WebApi.Controllers
+namespace Northwind.WebApi.Controllers
 {
     [RoutePrefix("api/1/customers")]
     public class CustomerController : ApiController
