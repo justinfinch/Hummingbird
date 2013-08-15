@@ -20,28 +20,22 @@ namespace Northwind.WebApi.Ioc
 
         public override void Load()
         {
-            //Bind Contexts
+            //Bind Contexts - ensure these are only created once per request
             Bind<OrdersContext>().ToSelf().InRequestScope();
 
-            //Bind types to a context to create data providers
-            BindToOrdersContext<Customer>();
+            //Bind domain objects to a context to create data providers
+            BindToContext<Customer, OrdersContext>();
 
             //Bind repositories
             Bind<ICustomerRepository>().To<CustomerRepository>().InRequestScope();
         }
 
-
+        //TODO: Move this into an EF Ninject dll
         protected void BindToContext<T, TContext>()
             where T : class, IObjectWithState, IDataRow, new()
             where TContext : DbContext
         {
             Bind<IDataProvider<T>>().To<DataProvider<T, TContext>>().InRequestScope();
-        }
-
-        protected void BindToOrdersContext<T>()
-            where T : class, IObjectWithState, IDataRow, new()
-        {
-            BindToContext<T, OrdersContext>();
         }
     }
 }
