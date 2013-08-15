@@ -42,5 +42,7 @@ namespace Hummingbird.Domain
         {
             return !Id.Equals(0);
         }
+
+        //TODO: Add IComparer stuff
     }
 }

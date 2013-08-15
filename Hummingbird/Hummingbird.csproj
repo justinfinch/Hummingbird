@@ -41,12 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\CacheProvider.cs" />
-    <Compile Include="Data\ICache.cs" />
-    <Compile Include="Data\ICacheProvider.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IDataRow.cs" />
-    <Compile Include="Data\InMemoryCache.cs" />
     <Compile Include="Data\IObjectWithState.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Data\ObjectState.cs" />
