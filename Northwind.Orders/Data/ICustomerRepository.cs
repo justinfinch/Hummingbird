@@ -11,5 +11,6 @@ namespace Northwind.Orders.Data
     {
         Customer Get(string customerId);
         IEnumerable<Customer> GetTop(int count);
+        IEnumerable<Customer> GetFavoriteCustomers();
     }
 }

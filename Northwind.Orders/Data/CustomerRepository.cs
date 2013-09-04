@@ -25,5 +25,13 @@ namespace Northwind.Orders.Data
         {
             return _customerDataProvider.Query().Take(count).ToList();
         }
+
+        public IEnumerable<Customer> GetFavoriteCustomers()
+        {
+            return _customerDataProvider.Execute("CustomersGetFavorite", new { 
+                City = "San Francisco",
+                Region = "CA"
+            });
+        }
     }
 }

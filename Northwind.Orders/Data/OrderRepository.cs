@@ -17,7 +17,7 @@ namespace Northwind.Orders.Data
             _ordersDataProvider = ordersDataProvider;
         }
 
-        public IEnumerable<Domain.Order> GetCustomerOrders(string customerId)
+        public IEnumerable<Order> GetCustomerOrders(string customerId)
         {
             throw new NotImplementedException();
         }

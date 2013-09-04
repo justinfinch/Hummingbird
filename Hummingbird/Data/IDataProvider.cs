@@ -16,5 +16,6 @@ namespace Hummingbird.Data
         void Delete(Expression<Func<T,bool>> query);
         T InsertOrUpdate(T item);
         IEnumerable<T> InsertOrUpdate(IEnumerable<T> items);
+        IEnumerable<T> Execute(string sprocName, object parameters);
     }
 }

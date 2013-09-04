@@ -29,5 +29,11 @@ namespace Northwind.WebApi.Controllers
             return _customerRepo.GetTop(100);
         }
 
+        [GET("favorites")]
+        public IEnumerable<Customer> GetFavorites()
+        {
+            return _customerRepo.GetFavoriteCustomers();
+        }
+
     }
 }

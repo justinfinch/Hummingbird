@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using Hummingbird.Data;
+using System.Reflection;
+using System.Data.SqlClient;
 
 namespace Hummingbird.EntityFramework
 {
@@ -83,9 +85,38 @@ namespace Hummingbird.EntityFramework
             return items;
         }
 
+        public IEnumerable<T> Execute(string storedProcedure, object parameters)
+        {
+            var arguments = PrepareArguments(storedProcedure, parameters);
+            return _context.Set<T>().SqlQuery(arguments.Item1, arguments.Item2).ToList();
+        }
+
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        private static Tuple<string, object[]> PrepareArguments(string storedProcedure, object parameters)
+        {
+            var parameterNames = new List<string>();
+            var parameterValues = new List<object>();
+
+            if (parameters != null)
+            {
+                foreach (PropertyInfo propertyInfo in parameters.GetType().GetProperties())
+                {
+                    string name = "@" + propertyInfo.Name;
+                    object value = propertyInfo.GetValue(parameters, null);
+
+                    parameterNames.Add(name);
+                    parameterValues.Add(new SqlParameter(name, value ?? DBNull.Value));
+                }
+            }
+
+            if (parameterNames.Count > 0)
+                storedProcedure += " " + string.Join(", ", parameterNames);
+
+            return new Tuple<string, object[]>(storedProcedure, parameterValues.ToArray());
         }
     }
 }
