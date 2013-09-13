@@ -4,14 +4,14 @@ using System.Threading;
 
 namespace Hummingbird.Domain
 {
-    public abstract class Entity<TKey> : IDataRow, IObjectWithState
+    public abstract class Entity<TKey> : IVersionedEntity, IAuditableEntity
     {
         public TKey Id { get; protected set; }
         public DateTime CreatedDate { get; protected set; }
         public DateTime LastModifiedDate { get; protected set; }
         public string CreatedBy { get; protected set; }
         public string LastModifiedBy { get; protected set; }
-        public byte[] Version { get; protected set; }
+        public Byte[] Version { get; protected set; }
         public ObjectState CurrentObjectState { get; protected set; }
 
         protected Entity()
@@ -19,7 +19,7 @@ namespace Hummingbird.Domain
             CurrentObjectState = ObjectState.Unchanged;
         }
 
-        public void WasModifiedBy()
+        public void WasModified()
         {
             if (CurrentObjectState == ObjectState.Unchanged)
             {
@@ -29,7 +29,7 @@ namespace Hummingbird.Domain
             }
         }
 
-        public void WasCreatedBy()
+        public void WasCreated()
         {
             CurrentObjectState = ObjectState.Added;
             CreatedDate = DateTime.Now;
@@ -38,9 +38,9 @@ namespace Hummingbird.Domain
             LastModifiedBy = Thread.CurrentPrincipal.Identity.Name;
         }
 
-        public bool HasKey()
+        public object GetKey()
         {
-            return !Id.Equals(0);
+            return Id;
         }
 
         //TODO: Add IComparer stuff

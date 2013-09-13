@@ -8,14 +8,11 @@ namespace Hummingbird.Data
     public interface IDataProvider<T> : IDisposable
         where T : class, new()
     {
-        //TODO: Pull this into another interface as some data providers may not be able to deal with IQueryables
-        IQueryable<T> Query(params Expression<Func<T, object>>[] includes);
-
         IEnumerable<T> Find(Expression<Func<T, bool>> query, params Expression<Func<T, object>>[] includes);
         void Delete(T item);
         void Delete(Expression<Func<T,bool>> query);
-        T InsertOrUpdate(T item);
-        IEnumerable<T> InsertOrUpdate(IEnumerable<T> items);
+        T Save(T item);
+        IEnumerable<T> Save(IEnumerable<T> items);
         IEnumerable<T> Execute(string sprocName, object parameters);
     }
 }

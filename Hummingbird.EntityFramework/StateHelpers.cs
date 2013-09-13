@@ -16,7 +16,7 @@ namespace Hummingbird.EntityFramework
                 case ObjectState.Deleted:
                     return EntityState.Deleted;
                 default:
-                    return EntityState.Unchanged;
+                    return EntityState.Detached;
             }
         }
     }

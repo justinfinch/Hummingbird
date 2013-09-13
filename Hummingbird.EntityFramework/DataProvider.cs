@@ -10,8 +10,8 @@ using System.Data.SqlClient;
 
 namespace Hummingbird.EntityFramework
 {
-    public class DataProvider<T, U> : IDataProvider<T>
-        where T : class, IObjectWithState, IDataRow, new()
+    public class DataProvider<T, U> : IQueryableDataProvider<T>
+        where T : class, IObjectWithState, new()
         where U : DbContext
     {
         protected U _context;
@@ -41,6 +41,19 @@ namespace Hummingbird.EntityFramework
             return results.ToList();
         }
 
+        //public IPager<T> FindPage(Expression<Func<T, bool>> query, int offset, int pageSize, params Expression<Func<T, object>>[] includes)
+        //{
+        //    IQueryable<T> results = _context.Set<T>().Where(query).Take(pageSize).Skip(offest * pageSize);
+
+        //    if (includes != null && includes.Length > 0)
+        //    {
+        //        results = includes.Aggregate(results,
+        //            (current, include) => current.Include(include));
+        //    }
+
+        //    return results.ToList();
+        //}
+
         public IQueryable<T> Query(params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> set = _context.Set<T>();
@@ -65,7 +78,7 @@ namespace Hummingbird.EntityFramework
             Find(query).ToList().ForEach(Delete);
         }
 
-        public T InsertOrUpdate(T item)
+        public T Save(T item)
         {
             _context.Set<T>().Add(item);
             _context.ApplyStateChanges();
@@ -73,7 +86,7 @@ namespace Hummingbird.EntityFramework
             return item;
         }
 
-        public IEnumerable<T> InsertOrUpdate(IEnumerable<T> items)
+        public IEnumerable<T> Save(IEnumerable<T> items)
         {
             foreach (var item in items)
             {

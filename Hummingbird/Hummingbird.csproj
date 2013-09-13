@@ -42,11 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\IDataProvider.cs" />
-    <Compile Include="Data\IDataRow.cs" />
     <Compile Include="Data\IObjectWithState.cs" />
+    <Compile Include="Data\IQueryableDataProvider.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="Data\IUnitOfWorkFactory.cs" />
     <Compile Include="Data\ObjectState.cs" />
+    <Compile Include="Data\UnitOfWork.cs" />
+    <Compile Include="Data\UnitOfWorkFactory.cs" />
     <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Domain\IAuditableEntity.cs" />
+    <Compile Include="Domain\IEntity.cs" />
+    <Compile Include="Domain\IVersionedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

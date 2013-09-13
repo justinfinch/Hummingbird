@@ -4,13 +4,13 @@ using Hummingbird.Domain;
 
 namespace Hummingbird.EntityFramework
 {
-    public class EntityMap<T, TKey> : EntityTypeConfiguration<T>
-        where T : Entity<TKey>
+    public class EntityMap<T> : EntityTypeConfiguration<T>
+        where T : class, IVersionedEntity
     {
-        public EntityMap (bool mapVersion = true)
+        public EntityMap ()
         {
             Ignore(e => e.CurrentObjectState);
-            if(mapVersion) Property(e => e.Version).IsRowVersion();
+            Property(e => e.Version).IsRowVersion();
         }
 
     }
