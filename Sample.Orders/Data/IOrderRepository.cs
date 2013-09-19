@@ -10,5 +10,7 @@ namespace Sample.Orders.Data
     public interface IOrderRepository
     {
         IEnumerable<Order> GetCustomerOrders(string customerId);
+        Order Save(Order order);
+        IEnumerable<Order> GetAll();
     }
 }

@@ -31,11 +31,26 @@ namespace Hummingbird.Domain
 
         public void WasCreated()
         {
-            CurrentObjectState = ObjectState.Added;
-            CreatedDate = DateTime.Now;
-            LastModifiedDate = DateTime.Now;
-            CreatedBy = Thread.CurrentPrincipal.Identity.Name;
-            LastModifiedBy = Thread.CurrentPrincipal.Identity.Name;
+            if (CurrentObjectState == ObjectState.Unchanged)
+            {
+                CurrentObjectState = ObjectState.Added;
+                CreatedDate = DateTime.Now;
+                LastModifiedDate = DateTime.Now;
+                CreatedBy = Thread.CurrentPrincipal.Identity.Name;
+                LastModifiedBy = Thread.CurrentPrincipal.Identity.Name;
+            }
+        }
+
+        protected void WasDeleted()
+        {
+            if (CurrentObjectState == ObjectState.Added)
+            {
+                CurrentObjectState = ObjectState.Unchanged;
+            }
+            else
+            {
+                CurrentObjectState = ObjectState.Deleted;
+            }
         }
 
         public object GetKey()

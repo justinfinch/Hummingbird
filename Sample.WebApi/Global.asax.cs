@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using Sample.Employees.Data;
+using Sample.Employees.Domain;
 using Sample.Orders.DatabaseAccess;
 using Sample.WebApi.Ioc;
 using System;
@@ -41,6 +43,16 @@ namespace Sample.WebApi
             var resolver = new AutofacWebApiDependencyResolver(container);
             // Configure Web API with the dependency resolver.
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
+
+            //SEED EMPLOYEE
+            var employeeRepo = container.Resolve<IEmployeeRepository>();
+            var employee = employeeRepo.GetByNumber(123);
+            if (employee == null)
+            {
+                employee = new Employee("Test", "Employee", 123);
+                employeeRepo.Save(employee);
+            }
+
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Autofac;
 using Hummingbird.Data;
 using Hummingbird.EntityFramework;
+using Sample.Employees.Data;
+using Sample.Employees.DatabaseAccess;
+using Sample.Employees.Domain;
 using Sample.Orders.Data;
 using Sample.Orders.DatabaseAccess;
 using Sample.Orders.Domain;
@@ -19,16 +22,19 @@ namespace Sample.WebApi.Ioc
         {
             //Bind Contexts - ensure these are only created once per request
             builder.RegisterType<OrdersContext>().InstancePerLifetimeScope();
+            builder.RegisterType<EmployeesContext>().InstancePerLifetimeScope();
 
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>().InstancePerLifetimeScope();
 
             //Bind domain objects to a context to create data providers
             RegisterToContext<Customer, OrdersContext>(builder);
             RegisterToContext<Order, OrdersContext>(builder);
+            RegisterToContext<Employee, EmployeesContext>(builder);
 
             //Bind repositories
             builder.RegisterType<CustomerRepository>().As<ICustomerRepository>().InstancePerLifetimeScope();
             builder.RegisterType<OrderRepository>().As<IOrderRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>().InstancePerLifetimeScope();
         }
 
         //TODO: Move this into an EF Autofac dll

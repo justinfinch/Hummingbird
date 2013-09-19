@@ -21,5 +21,15 @@ namespace Sample.Orders.Data
         {
             throw new NotImplementedException();
         }
+
+        public Order Save(Order order)
+        {
+            return _ordersDataProvider.Save(order);
+        }
+
+        public IEnumerable<Order> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

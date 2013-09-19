@@ -6,7 +6,7 @@ namespace Sample.DatabaseAccess
     {
         static BaseContext()
         {
-            Database.SetInitializer<TContext>(new DropCreateDatabaseAlways<TContext>());
+            Database.SetInitializer<TContext>(null);
         }
 
         protected BaseContext()

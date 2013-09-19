@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseAccess\EmployeeMap.cs" />
+    <Compile Include="DatabaseAccess\EmployeesContext.cs" />
+    <Compile Include="Data\EmployeeRepository.cs" />
+    <Compile Include="Data\IEmployeeRepository.cs" />
     <Compile Include="Domain\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,8 +68,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DatabaseAccess\" />
-    <Folder Include="Data\" />
     <Folder Include="Domain\Services\" />
   </ItemGroup>
   <ItemGroup>
