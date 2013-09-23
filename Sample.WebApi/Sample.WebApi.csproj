@@ -324,22 +324,13 @@
       <Project>{0686452e-6dfb-43a3-ad14-500eb34c0bae}</Project>
       <Name>Hummingbird</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sample.Employees\Sample.Employees.csproj">
-      <Project>{232801ae-1b11-4814-bfed-3f9d28f41035}</Project>
-      <Name>Sample.Employees</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample.Orders\Sample.Orders.csproj">
-      <Project>{24b622d0-b5b2-4d7a-8fa1-dd4516c62c0b}</Project>
-      <Name>Sample.Orders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample\Sample.csproj">
-      <Project>{87b54feb-2392-445e-a713-df10a3b35ce0}</Project>
-      <Name>Sample</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

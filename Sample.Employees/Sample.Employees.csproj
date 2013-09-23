@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
+    <OutputPath>bin\Publish\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -61,10 +64,6 @@
     <ProjectReference Include="..\Hummingbird\Hummingbird.csproj">
       <Project>{0686452e-6dfb-43a3-ad14-500eb34c0bae}</Project>
       <Name>Hummingbird</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample\Sample.csproj">
-      <Project>{87b54feb-2392-445e-a713-df10a3b35ce0}</Project>
-      <Name>Sample</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
