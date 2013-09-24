@@ -32,13 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
-    <OutputPath>..\NuGet\Hummingbird.EntityFramework\</OutputPath>
+    <OutputPath>..\NuGet\Hummingbird.EntityFramework\lib\net45\</OutputPath>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -61,6 +62,7 @@
     <ProjectReference Include="..\Hummingbird\Hummingbird.csproj">
       <Project>{0686452e-6dfb-43a3-ad14-500eb34c0bae}</Project>
       <Name>Hummingbird</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
