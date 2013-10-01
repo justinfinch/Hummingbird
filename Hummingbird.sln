@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		NuGet\Hummingbird.EntityFramework.Autofac\Hummingbird.EntityFramework.Autofac.nuspec = NuGet\Hummingbird.EntityFramework.Autofac\Hummingbird.EntityFramework.Autofac.nuspec
 		NuGet\Hummingbird.EntityFramework\Hummingbird.EntityFramework.nuspec = NuGet\Hummingbird.EntityFramework\Hummingbird.EntityFramework.nuspec
+		NuGet\Hummingbird.EntityFramework.StructureMap\Hummingbird.EntityFramework.StructureMap.nuspec = NuGet\Hummingbird.EntityFramework.StructureMap\Hummingbird.EntityFramework.StructureMap.nuspec
 		NuGet\Hummingbird\Hummingbird.nuspec = NuGet\Hummingbird\Hummingbird.nuspec
 		NuGet\Nuget.msbuild = NuGet\Nuget.msbuild
 	EndProjectSection
