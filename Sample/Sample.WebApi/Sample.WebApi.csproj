@@ -67,6 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Hummingbird.EntityFramework.0.1.0.0\lib\net45\Hummingbird.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Hummingbird.EntityFramework.Autofac">
+      <HintPath>..\packages\Hummingbird.EntityFramework.Autofac.0.1.0.0\lib\net45\Hummingbird.EntityFramework.Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />

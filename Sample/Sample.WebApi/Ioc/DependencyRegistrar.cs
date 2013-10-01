@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Hummingbird.EntityFramework.Autofac;
 
 namespace Sample.WebApi.Ioc
 {
@@ -24,25 +25,18 @@ namespace Sample.WebApi.Ioc
             builder.RegisterType<OrdersContext>().InstancePerLifetimeScope();
             builder.RegisterType<EmployeesContext>().InstancePerLifetimeScope();
 
-            builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>().InstancePerLifetimeScope();
-
             //Bind domain objects to a context to create data providers
-            RegisterToContext<Customer, OrdersContext>(builder);
-            RegisterToContext<Order, OrdersContext>(builder);
-            RegisterToContext<Employee, EmployeesContext>(builder);
+            builder.ToContextAsQueryable<Customer, OrdersContext>().InstancePerLifetimeScope();
+            builder.ToContextAsQueryable<Order, OrdersContext>().InstancePerLifetimeScope();
+            builder.ToContextAsQueryable<Employee, EmployeesContext>().InstancePerLifetimeScope();
 
             //Bind repositories
             builder.RegisterType<CustomerRepository>().As<ICustomerRepository>().InstancePerLifetimeScope();
             builder.RegisterType<OrderRepository>().As<IOrderRepository>().InstancePerLifetimeScope();
             builder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>().InstancePerLifetimeScope();
-        }
 
-        //TODO: Move this into an EF Autofac dll
-        protected void RegisterToContext<T, TContext>(ContainerBuilder builder)
-            where T : class, IObjectWithState, new()
-            where TContext : DbContext
-        {
-            builder.RegisterType<DataProvider<T, TContext>>().As<IQueryableDataProvider<T>>().InstancePerLifetimeScope();
+            //Register Services
+            builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>().InstancePerLifetimeScope();
         }
     }
 }

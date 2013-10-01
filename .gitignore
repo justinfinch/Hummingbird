@@ -23,6 +23,7 @@ obj/
 *.rar
 *.tar
 *.zip
+*.nupkg
 
 # Logs and databases #
 ######################
@@ -41,4 +42,5 @@ Thumbs.db
 ####################
 *.user
 *.suo
+*.dbmdl
 _ReSharper*/
