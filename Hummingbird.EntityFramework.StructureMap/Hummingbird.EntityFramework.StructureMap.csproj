@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0353A2D8-CCC1-4798-B688-051645BB6128}</ProjectGuid>
+    <ProjectGuid>{4BCDDB1E-3977-48E9-B755-E6CC37AA0D66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hummingbird.EntityFramework.Autofac</RootNamespace>
-    <AssemblyName>Hummingbird.EntityFramework.Autofac</AssemblyName>
+    <RootNamespace>Hummingbird.EntityFramework.StructureMap</RootNamespace>
+    <AssemblyName>Hummingbird.EntityFramework.StructureMap</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -32,16 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
-    <OutputPath>..\NuGet\Hummingbird.EntityFramework.Autofac\lib\net45\</OutputPath>
+    <OutputPath>..\NuGet\Hummingbird.EntityFramework.StructureMap\lib\net45\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -55,8 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContainerBuilderExtensions.cs" />
+    <Compile Include="IRegistryExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hummingbird.EntityFramework\Hummingbird.EntityFramework.csproj">
@@ -69,9 +72,6 @@
       <Name>Hummingbird</Name>
       <Private>False</Private>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

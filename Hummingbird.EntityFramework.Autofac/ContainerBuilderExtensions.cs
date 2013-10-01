@@ -17,7 +17,7 @@ namespace Hummingbird.EntityFramework.Autofac
             where T : class, IObjectWithState, new()
             where TContext : DbContext
         {
-            return builder.RegisterType<DataProvider<T, TContext>>().As<IQueryableDataProvider<T>>();
+            return builder.RegisterType<DataProvider<T, TContext>>().As<IDataProvider<T>>();
         }
 
         public static IRegistrationBuilder<DataProvider<T, TContext>, ConcreteReflectionActivatorData, SingleRegistrationStyle> ToContextAsQueryable<T, TContext>(this ContainerBuilder builder)
