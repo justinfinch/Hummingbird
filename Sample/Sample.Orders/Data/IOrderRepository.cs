@@ -12,5 +12,6 @@ namespace Sample.Orders.Data
         IEnumerable<Order> GetCustomerOrders(string customerId);
         Order Save(Order order);
         IEnumerable<Order> GetAll();
+        IEnumerable<Order> Search(DateTime? placedOn, decimal? orderTotal);
     }
 }

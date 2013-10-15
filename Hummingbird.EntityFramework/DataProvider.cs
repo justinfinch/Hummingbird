@@ -30,7 +30,7 @@ namespace Hummingbird.EntityFramework
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> query, params Expression<Func<T, object>>[] includes)
         {
-            IQueryable<T> results = _context.Set<T>().Where(query);
+            IQueryable<T> results = _context.Set<T>().AsExpandable().Where(query);
 
             if (includes != null && includes.Length > 0)
             {

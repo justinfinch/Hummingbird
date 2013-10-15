@@ -102,7 +102,7 @@ namespace Hummingbird.Domain
         private void ValidateKey(Guid? key)
         {
             if (_isLocked && key != _key)
-                throw new InvalidOperationException("Cannot add and item to a locked collection");
+                throw new InvalidOperationException("Cannot modify a locked collection without the key");
         }
 
     }

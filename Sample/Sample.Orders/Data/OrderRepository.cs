@@ -17,6 +17,19 @@ namespace Sample.Orders.Data
             _ordersDataProvider = ordersDataProvider;
         }
 
+        public IEnumerable<Order> Search(DateTime? placedOn, decimal? orderTotal)
+        {
+            var query = ExpressionHelper.False<Order>();
+
+            if(placedOn.HasValue)
+                query = query.Or(p => p.PlacedOn == placedOn.Value);
+            
+            if(orderTotal.HasValue)
+                query = query.Or(p => p.Total == orderTotal.Value);
+
+            return _ordersDataProvider.Find(query);
+        }
+
         public IEnumerable<Order> GetCustomerOrders(string customerId)
         {
             throw new NotImplementedException();

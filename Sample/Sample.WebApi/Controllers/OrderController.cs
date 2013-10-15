@@ -30,13 +30,19 @@ namespace Sample.WebApi.Controllers
             _uowFactory = uowFactory;
         }
 
+        [GET(""), HttpGet]
+        public IEnumerable<Order> Search()
+        {
+            return _orderRepo.Search(DateTime.Today, 100M);
+        }
+
         [POST("")]
         public Order PlaceOrder(OrderDto order) //TODO: SHould be a dto
         {
             Order newOrder = null;
             using (var uow = _uowFactory.Create())
             {
-                newOrder = new Order(DateTime.Now, order.Total, order.EmployeeNumber);
+                newOrder = new Order(DateTime.Today, order.Total, order.EmployeeNumber);
                 var employee = _employeeRepo.GetByNumber(newOrder.EmployeeNumber);
                 employee.IncrementTotalSales(1);
 
@@ -48,6 +54,9 @@ namespace Sample.WebApi.Controllers
 
             return newOrder;
         }
+
+        
+
 
     }
 }

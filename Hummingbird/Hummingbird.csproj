@@ -46,10 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ExpandableQuery.cs" />
+    <Compile Include="Data\ExpressionExpander.cs" />
     <Compile Include="Data\ExpressionHelper.cs" />
+    <Compile Include="Data\ExpressionVisitor.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IObjectWithState.cs" />
     <Compile Include="Data\IQueryableDataProvider.cs" />
+    <Compile Include="Data\IQueryableExtensions.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Data\IUnitOfWorkFactory.cs" />
     <Compile Include="Data\ObjectState.cs" />
