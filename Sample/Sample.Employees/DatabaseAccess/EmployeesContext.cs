@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sample.Employees.DatabaseAccess
 {
-    public class EmployeesContext : BaseContext<EmployeesContext>
+    public class EmployeesContext : SampleBaseContext<EmployeesContext>
     {
         public IDbSet<Employee> Employees { get; set; }
 
@@ -21,9 +21,7 @@ namespace Sample.Employees.DatabaseAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Configurations.Add(new EmployeeMap());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

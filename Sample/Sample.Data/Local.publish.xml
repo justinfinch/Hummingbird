@@ -6,5 +6,7 @@
     <DeployScriptFileName>Sample.Data.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=.;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
+    <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
   </PropertyGroup>
 </Project>

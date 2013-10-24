@@ -12,7 +12,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Sample.Orders.DatabaseAccess
 {
-    public class OrdersContext : BaseContext<OrdersContext>
+    public class OrdersContext : SampleBaseContext<OrdersContext>
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -24,10 +24,7 @@ namespace Sample.Orders.DatabaseAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Configurations.Add(new CustomerMap());
-            modelBuilder.Configurations.Add(new OrderMap());
+            base.OnModelCreating(modelBuilder);
         }
 
 

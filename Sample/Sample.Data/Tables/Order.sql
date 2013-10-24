@@ -8,5 +8,5 @@
     [CreatedBy] VARCHAR(50) NOT NULL, 
     [LastModifiedDate] DATETIME NOT NULL, 
     [LastModifiedBy] VARCHAR(50) NOT NULL, 
-    [Version] TIMESTAMP NOT NULL
+    [RowVersion] TIMESTAMP NOT NULL
 )
