@@ -8,6 +8,6 @@ namespace Hummingbird.Domain
 {
     public interface IVersionedEntity : IEntity
     {
-        byte[] Version { get; }
+        byte[] RowVersion { get; }
     }
 }

@@ -19,10 +19,10 @@ namespace Sample.Orders.Data
 
         public IEnumerable<Order> Search(DateTime? placedOn, decimal? orderTotal)
         {
-            var query = ExpressionHelper.False<Order>();
+            var query = ExpressionHelper.True<Order>();
 
             if(placedOn.HasValue)
-                query = query.Or(p => p.PlacedOn == placedOn.Value);
+                query = query.And(p => p.PlacedOn == placedOn.Value);
             
             if(orderTotal.HasValue)
                 query = query.Or(p => p.Total == orderTotal.Value);

@@ -1,6 +1,7 @@
 ﻿using System;
 using Hummingbird.Data;
 using System.Threading;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hummingbird.Domain
 {
@@ -11,7 +12,9 @@ namespace Hummingbird.Domain
         public DateTime LastModifiedDate { get; protected set; }
         public string CreatedBy { get; protected set; }
         public string LastModifiedBy { get; protected set; }
-        public Byte[] Version { get; protected set; }
+        public Byte[] RowVersion { get; protected set; }
+
+        [NotMapped] //TODO: Find a better way to do this through EF context 
         public ObjectState CurrentObjectState { get; protected set; }
 
         protected Entity()

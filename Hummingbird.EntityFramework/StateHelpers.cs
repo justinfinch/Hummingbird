@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Hummingbird.Data;
+using System.Data.Entity;
 
 namespace Hummingbird.EntityFramework
 {

@@ -2,14 +2,21 @@
 <package >
   <metadata>
     <id>Hummingbird.EntityFramework</id>
-    <version>0.1.0.2</version>
+    <version>0.2.0.0</version>
     <title>Hummingbird Entityframework Implementation</title>
     <authors>Justin Finch</authors>
     <owners>Justin Finch</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An implemention of the Hummingbird API for Entityframework</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Upgrading to use EF6. Added new BaseContext class to help with easy and proper DbContext configuration.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>Domain Design Entityframework</tags>
+    <projectUrl>https://github.com/justinfinch/Hummingbird/wiki</projectUrl>
+    <dependencies>
+      <group>
+        <dependency id="Hummingbird" version="0.2.0.0" />
+        <dependency id="EntityFramework" version="6.0.1" />
+      </group>
+    </dependencies>
   </metadata>
 </package>
