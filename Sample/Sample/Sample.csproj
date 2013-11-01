@@ -42,14 +42,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\Hummingbird.EntityFramework.0.2.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Hummingbird, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Hummingbird.0.2.0.0\lib\net45\Hummingbird.dll</HintPath>
-    </Reference>
-    <Reference Include="Hummingbird.EntityFramework, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Hummingbird.EntityFramework.0.2.0.0\lib\net45\Hummingbird.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -66,6 +58,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hummingbird.EntityFramework\Hummingbird.EntityFramework.csproj">
+      <Project>{3f1fa30f-db81-497a-bb06-6aab0ba739e3}</Project>
+      <Name>Hummingbird.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hummingbird\Hummingbird.csproj">
+      <Project>{0686452e-6dfb-43a3-ad14-500eb34c0bae}</Project>
+      <Name>Hummingbird</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -7,6 +7,7 @@ using Sample.Orders.Domain;
 using Sample.WebApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,20 +21,48 @@ namespace Sample.WebApi.Controllers
         private readonly IOrderRepository _orderRepo;
         private readonly IUnitOfWorkFactory _uowFactory;
         private readonly IEmployeeRepository _employeeRepo;
+        private readonly IDynamicDataProvider _dynamicDataProvider;
 
         public OrderController(IOrderRepository orderRepo, 
             IEmployeeRepository employeeRepo, 
-            IUnitOfWorkFactory uowFactory)
+            IUnitOfWorkFactory uowFactory,
+            IDynamicDataProvider dynamicDataProvider)
         {
             _orderRepo = orderRepo;
             _employeeRepo = employeeRepo;
             _uowFactory = uowFactory;
+            _dynamicDataProvider = dynamicDataProvider;
         }
 
         [GET(""), HttpGet]
         public IEnumerable<Order> Search()
         {
             return _orderRepo.Search(DateTime.Today, 100M);
+        }
+
+        [GET("withsproc"), HttpGet]
+        public IEnumerable<OrderDto> UseDynaicSproc()
+        {
+            //DON"T DO THIS IN THE CONTROLLER, JUST AN EXAMPLE
+            dynamic results =_dynamicDataProvider.Execute("OrdersGet", new
+            {
+                Total = 200M
+            });
+
+            var response = new Collection<OrderDto>();
+
+            if (results != null)
+            {
+                foreach (dynamic result in results)
+                {
+                    var orderDto = new OrderDto();
+                    orderDto.EmployeeNumber = result.EmpNum;
+                    orderDto.Total = result.Total;
+                    response.Add(orderDto);
+                }
+            }
+
+            return response;
         }
 
         [POST("")]

@@ -30,6 +30,8 @@ namespace Sample.WebApi.Ioc
             builder.ToContextAsQueryable<Order, OrdersContext>().InstancePerLifetimeScope();
             builder.ToContextAsQueryable<Employee, EmployeesContext>().InstancePerLifetimeScope();
 
+            builder.Register(t => new DynamicDataProvider("HummingbirdSample")).As<IDynamicDataProvider>().InstancePerLifetimeScope();
+
             //Bind repositories
             builder.RegisterType<CustomerRepository>().As<ICustomerRepository>().InstancePerLifetimeScope();
             builder.RegisterType<OrderRepository>().As<IOrderRepository>().InstancePerLifetimeScope();

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Transactions" />
@@ -47,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DynamicDataProvider.cs" />
     <Compile Include="Data\ExpandableQuery.cs" />
     <Compile Include="Data\ExpressionExpander.cs" />
     <Compile Include="Data\ExpressionHelper.cs" />
@@ -55,9 +57,12 @@
     <Compile Include="Data\IObjectWithState.cs" />
     <Compile Include="Data\IQueryableDataProvider.cs" />
     <Compile Include="Data\IQueryableExtensions.cs" />
+    <Compile Include="Data\IDynamicDataProvider.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Data\IUnitOfWorkFactory.cs" />
+    <Compile Include="Data\Massive.cs" />
     <Compile Include="Data\ObjectState.cs" />
+    <Compile Include="Data\ParameterHelper.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Data\UnitOfWorkFactory.cs" />
     <Compile Include="Domain\Entity.cs" />

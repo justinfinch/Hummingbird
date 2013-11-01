@@ -14,5 +14,6 @@ namespace Hummingbird.Data
         T Save(T item);
         IEnumerable<T> Save(IEnumerable<T> items);
         IEnumerable<T> Execute(string sprocName, object parameters);
+        void ExecuteNonQuery(string sprocName, object parameters);
     }
 }

@@ -61,10 +61,12 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="StoredProcs" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Employee.sql" />
     <Build Include="Tables\Order.sql" />
+    <Build Include="StoredProcs\OrdersGet.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Sample.Data.refactorlog" />
