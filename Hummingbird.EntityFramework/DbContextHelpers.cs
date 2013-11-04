@@ -13,5 +13,14 @@ namespace Hummingbird.EntityFramework
                 entry.State = StateHelpers.ConvertState(stateInfo.CurrentObjectState);
             }
         }
+
+        public static void ResetStateChanges(this DbContext context)
+        {
+            foreach (var entry in context.ChangeTracker.Entries<IObjectWithState>())
+            {
+                IObjectWithState stateInfo = entry.Entity;
+                stateInfo.ResetState();
+            }
+        }
     }
 }

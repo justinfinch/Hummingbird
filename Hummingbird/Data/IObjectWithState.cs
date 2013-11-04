@@ -3,5 +3,6 @@
     public interface IObjectWithState
     {
         ObjectState CurrentObjectState { get; }
+        void ResetState();
     }
 }

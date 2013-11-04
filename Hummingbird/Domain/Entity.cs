@@ -22,7 +22,7 @@ namespace Hummingbird.Domain
             CurrentObjectState = ObjectState.Unchanged;
         }
 
-        public void WasModified()
+        protected void WasModified()
         {
             if (CurrentObjectState == ObjectState.Unchanged)
             {
@@ -32,7 +32,7 @@ namespace Hummingbird.Domain
             }
         }
 
-        public void WasCreated()
+        protected void WasCreated()
         {
             if (CurrentObjectState == ObjectState.Unchanged)
             {
@@ -54,6 +54,11 @@ namespace Hummingbird.Domain
             {
                 CurrentObjectState = ObjectState.Deleted;
             }
+        }
+
+        public void ResetState()
+        {
+            CurrentObjectState = ObjectState.Unchanged;
         }
 
         public object GetKey()
