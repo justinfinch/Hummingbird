@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseAccess\OrderMap.cs" />
     <Compile Include="DatabaseAccess\OrdersContext.cs" />
     <Compile Include="Data\CustomerRepository.cs" />
     <Compile Include="Data\ICustomerRepository.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Data\OrderRepository.cs" />
     <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\Order.cs" />
-    <Compile Include="Domain\OrderDetail.cs" />
+    <Compile Include="Domain\LineItem.cs" />
     <Compile Include="Domain\Services\CustomerManager.cs" />
     <Compile Include="Domain\Services\ICustomerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -192,6 +192,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Ioc\DependencyRegistrar.cs" />
+    <Compile Include="Models\LineItemDto.cs" />
     <Compile Include="Models\OrderDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

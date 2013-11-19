@@ -67,6 +67,7 @@
     <Build Include="Tables\Employee.sql" />
     <Build Include="Tables\Order.sql" />
     <Build Include="StoredProcs\OrdersGet.sql" />
+    <Build Include="Tables\LineItem.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Sample.Data.refactorlog" />

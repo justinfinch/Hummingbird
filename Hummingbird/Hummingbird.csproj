@@ -49,10 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DynamicDataProvider.cs" />
-    <Compile Include="Data\ExpandableQuery.cs" />
-    <Compile Include="Data\ExpressionExpander.cs" />
-    <Compile Include="Data\ExpressionHelper.cs" />
-    <Compile Include="Data\ExpressionVisitor.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IObjectWithState.cs" />
     <Compile Include="Data\IQueryableDataProvider.cs" />
@@ -63,6 +59,7 @@
     <Compile Include="Data\Massive.cs" />
     <Compile Include="Data\ObjectState.cs" />
     <Compile Include="Data\ParameterHelper.cs" />
+    <Compile Include="Data\PredicateBuilder.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Data\UnitOfWorkFactory.cs" />
     <Compile Include="Domain\Entity.cs" />

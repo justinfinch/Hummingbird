@@ -13,7 +13,10 @@ namespace Sample.Orders.Domain
         public decimal Total { get; protected set; }
         public int EmployeeNumber { get; protected set; }
 
+        public ICollection<LineItem> LineItems { get; private set; }
+
         public Order()
+
         {
 
         }

@@ -19,15 +19,15 @@ namespace Sample.Orders.Data
 
         public IEnumerable<Order> Search(DateTime? placedOn, decimal? orderTotal)
         {
-            var query = ExpressionHelper.True<Order>();
+            var query = PredicateBuilder.True<Order>();
 
             if(placedOn.HasValue)
-                query = query.And(p => p.PlacedOn == placedOn.Value);
+                query = query.And(p => p.PlacedOn >= placedOn.Value);
             
             if(orderTotal.HasValue)
-                query = query.Or(p => p.Total == orderTotal.Value);
+                query = query.Or(p => p.Total >= orderTotal.Value);
 
-            return _ordersDataProvider.Find(query);
+            return _ordersDataProvider.Find(query, o => o.LineItems);
         }
 
         public IEnumerable<Order> GetCustomerOrders(string customerId)

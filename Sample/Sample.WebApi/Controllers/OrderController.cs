@@ -37,7 +37,8 @@ namespace Sample.WebApi.Controllers
         [GET(""), HttpGet]
         public IEnumerable<Order> Search()
         {
-            return _orderRepo.Search(DateTime.Today, 100M);
+            //return _orderRepo.Search(DateTime.Today, 100M);
+            return _orderRepo.Search(new DateTime(2013, 10, 12), 100M);
         }
 
         [GET("withsproc"), HttpGet]
