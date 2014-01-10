@@ -9,6 +9,7 @@
 bin/
 packages/
 obj/
+lib/
 !NuGet.exe
 
 # Packages #

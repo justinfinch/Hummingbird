@@ -7,12 +7,12 @@ namespace Hummingbird.Domain
 {
     public abstract class Entity<TKey> : IVersionedEntity, IAuditableEntity
     {
-        public TKey Id { get; protected set; }
-        public DateTime CreatedDate { get; protected set; }
-        public DateTime LastModifiedDate { get; protected set; }
-        public string CreatedBy { get; protected set; }
-        public string LastModifiedBy { get; protected set; }
-        public Byte[] RowVersion { get; protected set; }
+        public virtual TKey Id { get; protected set; }
+        public virtual DateTime CreatedDate { get; protected set; }
+        public virtual DateTime LastModifiedDate { get; protected set; }
+        public virtual string CreatedBy { get; protected set; }
+        public virtual string LastModifiedBy { get; protected set; }
+        public virtual Byte[] RowVersion { get; protected set; }
 
         [NotMapped] //TODO: Find a better way to do this through EF context 
         public ObjectState CurrentObjectState { get; protected set; }
