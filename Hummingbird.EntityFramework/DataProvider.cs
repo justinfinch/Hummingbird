@@ -83,6 +83,7 @@ namespace Hummingbird.EntityFramework
             _context.Set<T>().Add(item);
             _context.ApplyStateChanges();
             _context.SaveChanges();
+            _context.ResetStateChanges();
             return item;
         }
 

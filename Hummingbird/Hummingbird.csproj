@@ -67,6 +67,11 @@
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Domain\IVersionedEntity.cs" />
     <Compile Include="Domain\LockableCollection.cs" />
+    <Compile Include="Events\EventPublisher.cs" />
+    <Compile Include="Events\EventResourceManager.cs" />
+    <Compile Include="Events\EventStream.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IEventStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
