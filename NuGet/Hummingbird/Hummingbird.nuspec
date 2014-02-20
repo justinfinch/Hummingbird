@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>Hummingbird</id>
-    <version>0.3.1.1</version>
+    <version>0.3.1.2</version>
     <title>Hummingbird</title>
     <authors>Justin Finch</authors>
     <owners>Justin Finch</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A light weight library for writing domain centric database applications.</description>
-    <releaseNotes>Made properties on base entity virtual to make unit testing easier.</releaseNotes>
+    <releaseNotes>Fixed minor bug in equality comparer of entity object.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>Domain Design Entityframework</tags>
     <projectUrl>https://github.com/justinfinch/Hummingbird/wiki</projectUrl>

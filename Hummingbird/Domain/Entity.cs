@@ -103,7 +103,7 @@ namespace Hummingbird.Domain
 
                 if (otherEntity != null)
                 {
-                    areEqual = this.GetKey() == otherEntity.GetKey();
+                    areEqual = GetHashCode() == otherEntity.GetHashCode();
                 }
             }
 
