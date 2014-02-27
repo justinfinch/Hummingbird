@@ -10,7 +10,7 @@ namespace Hummingbird.Data
 {
     public static class ParameterHelper
     {
-        public static Tuple<string, object[]>PrepareArguments(this object parameters, string storedProcedure)
+        public static Tuple<string, object[]>PrepareSprocArguments(this object parameters, string storedProcedure)
         {
             var parameterNames = new List<string>();
             var parameterValues = new List<object>();
@@ -34,6 +34,20 @@ namespace Hummingbird.Data
             return new Tuple<string, object[]>(storedProcedure, parameterValues.ToArray());
         }
 
+        public static Tuple<string, object[]> PrepareSqlCommandArguments(this object parameters, string command)
+        {
+            var parameterValues = new List<object>();
 
+            if (parameters != null)
+            {
+                foreach (PropertyInfo propertyInfo in parameters.GetType().GetProperties())
+                {
+                    object value = propertyInfo.GetValue(parameters, null);
+                    parameterValues.Add(value);
+                }
+            }
+
+            return new Tuple<string, object[]>(command, parameterValues.ToArray());
+        }
     }
 }

@@ -102,13 +102,13 @@ namespace Hummingbird.EntityFramework
 
         public IEnumerable<T> Execute(string sprocName, object parameters)
         {
-            var arguments = parameters.PrepareArguments(sprocName);
+            var arguments = parameters.PrepareSprocArguments(sprocName);
             return _context.Set<T>().SqlQuery(arguments.Item1, arguments.Item2).ToList();
         }
 
         public void ExecuteNonQuery(string sprocName, object parameters)
         {
-            var arguments = parameters.PrepareArguments(sprocName);
+            var arguments = parameters.PrepareSprocArguments(sprocName);
             _context.Database.ExecuteSqlCommand(arguments.Item1, arguments.Item2);
         }
 

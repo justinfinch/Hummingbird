@@ -1,9 +1,5 @@
 ﻿using Massive;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hummingbird.Data
 {
@@ -19,16 +15,25 @@ namespace Hummingbird.Data
         public IEnumerable<dynamic> Execute(string sprocName, object parameters)
         {
             var dynamicModel = new DynamicModel(_connectionString);
-            var arguments = parameters.PrepareArguments(sprocName);
+            var arguments = parameters.PrepareSprocArguments(sprocName);
             var results = dynamicModel.Query(arguments.Item1, arguments.Item2);
             return results;
         }
 
-        public void ExecuteNonQuery(string sprocName, dynamic parameters)
+        public void ExecuteNonQuery(string sprocName, object parameters)
         {
             var dynamicModel = new DynamicModel(_connectionString);
-            var arguments = parameters.PrepareArguments(sprocName);
+            var arguments = parameters.PrepareSprocArguments(sprocName);
             dynamicModel.Query(arguments.Item1, arguments.Item2);
+        }
+
+
+        public IEnumerable<dynamic> ExecuteCommand(string command, object parameters)
+        {
+            var dynamicModel = new DynamicModel(_connectionString);
+            var arguments = parameters.PrepareSqlCommandArguments(command);
+            var results = dynamicModel.Query(arguments.Item1, arguments.Item2);
+            return results;
         }
     }
 }
