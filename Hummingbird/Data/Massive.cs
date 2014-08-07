@@ -7,9 +7,6 @@ using System.Data.Common;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Text.RegularExpressions;
 
 namespace Massive
 {
@@ -145,24 +142,35 @@ namespace Massive
     {
         DbProviderFactory _factory;
         string ConnectionString;
-        public static DynamicModel Open(string connectionStringName)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connectionString">Connection string or Connection String Name from ConfigurationManager</param>
+        /// <returns></returns>
+        public static DynamicModel Open(string connectionString)
         {
-            dynamic dm = new DynamicModel(connectionStringName);
+            dynamic dm = new DynamicModel(connectionString);
             return dm;
         }
-        public DynamicModel(string connectionStringName, string tableName = "",
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connectionString">Connection string or Connection String Name from ConfigurationManager</param>
+        /// <param name="tableName"></param>
+        /// <param name="primaryKeyField"></param>
+        /// <param name="descriptorField"></param>
+        public DynamicModel(string connectionString, string tableName = "",
             string primaryKeyField = "", string descriptorField = "")
         {
             TableName = tableName == "" ? this.GetType().Name : tableName;
             PrimaryKeyField = string.IsNullOrEmpty(primaryKeyField) ? "ID" : primaryKeyField;
             DescriptorField = descriptorField;
-            var _providerName = "System.Data.SqlClient";
 
-            if (!string.IsNullOrWhiteSpace(ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName))
-                _providerName = ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
+            var connInfo = ParseConnectionString(connectionString);
 
-            _factory = DbProviderFactories.GetFactory(_providerName);
-            ConnectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+            _factory = DbProviderFactories.GetFactory(connInfo.ProviderName);
+            ConnectionString = connInfo.ConnectionString;
         }
 
         /// <summary>
@@ -812,5 +820,42 @@ namespace Massive
             }
             return true;
         }
+
+        private ConnectionInfo ParseConnectionString(string connInfo)
+        {
+            if (String.IsNullOrWhiteSpace(connInfo))
+            {
+                throw new NullReferenceException("ConnectionInfo must not be empty or null.");
+            }
+
+            // Assumes that all connection strings contain ;
+            if (connInfo.Contains(";"))
+            {
+                return new ConnectionInfo(connInfo);
+            }
+
+            // If it's not a connection string, assumes that it's a connection name
+            var connSetting = ConfigurationManager.ConnectionStrings[connInfo];
+
+            if (connSetting == null)
+            {
+                throw new NullReferenceException(String.Format("'{0}' is not a valid config connection string name.", connInfo));
+            }
+
+            return new ConnectionInfo(connSetting.ConnectionString, connSetting.ProviderName);
+        }
+
+        internal class ConnectionInfo
+        {
+            public string ConnectionString { get; private set; }
+            public string ProviderName { get; private set; }
+
+            public ConnectionInfo(string connectionString, string providerName = null)
+            {
+                ConnectionString = connectionString;
+                ProviderName = (String.IsNullOrWhiteSpace(providerName)) ? "System.Data.SqlClient" : providerName;
+            }
+        }
     }
+
 }
