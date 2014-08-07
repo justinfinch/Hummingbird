@@ -16,7 +16,7 @@ namespace Hummingbird.Data
             var options = new TransactionOptions();
             options.Timeout = TransactionManager.MaximumTimeout;
             options.IsolationLevel = IsolationLevel.ReadCommitted;
-            _transaction = new TransactionScope(TransactionScopeOption.Required, options);
+            _transaction = new TransactionScope(TransactionScopeOption.Required, options, TransactionScopeAsyncFlowOption.Enabled);
         }
 
         public void Commit()
