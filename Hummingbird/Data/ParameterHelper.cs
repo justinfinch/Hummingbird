@@ -34,20 +34,29 @@ namespace Hummingbird.Data
             return new Tuple<string, object[]>(storedProcedure, parameterValues.ToArray());
         }
 
-        public static Tuple<string, object[]> PrepareSqlCommandArguments(this object parameters, string command)
+        public static Tuple<string, object[]> PrepareSprocArguments(this Dictionary<string, object> parameters, string storedProcedure)
         {
+            var parameterNames = new List<string>();
             var parameterValues = new List<object>();
 
             if (parameters != null)
             {
-                foreach (PropertyInfo propertyInfo in parameters.GetType().GetProperties())
+                foreach (var kvp in parameters)
                 {
-                    object value = propertyInfo.GetValue(parameters, null);
-                    parameterValues.Add(value);
+                    string name = "@" + kvp.Key;
+                    object value = kvp.Value;
+
+                    parameterNames.Add(name);
+
+                    parameterValues.Add(new SqlParameter(name, value ?? DBNull.Value));
                 }
             }
 
-            return new Tuple<string, object[]>(command, parameterValues.ToArray());
+            if (parameterNames.Count > 0)
+                storedProcedure += " " + string.Join(", ", parameterNames);
+
+            return new Tuple<string, object[]>(storedProcedure, parameterValues.ToArray());
         }
+
     }
 }

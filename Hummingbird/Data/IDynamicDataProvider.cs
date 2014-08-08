@@ -9,12 +9,9 @@ namespace Hummingbird.Data
 {
     public interface IDynamicDataProvider
     {
-        IEnumerable<dynamic> Execute(string sprocName, dynamic parameters);
-        void ExecuteNonQuery(string sprocName, dynamic parameters);
-        IEnumerable<dynamic> ExecuteCommand(string command, dynamic parameters);
-
-        IEnumerable<dynamic> Execute(string sprocName, Dictionary<string, object> parameters);
-        void ExecuteNonQuery(string sprocName, Dictionary<string, object> parameters);
-        IEnumerable<dynamic> ExecuteCommand(string command, Dictionary<string, object> parameters);
+        IEnumerable<dynamic> ExecuteSproc(string sprocName, object parameters);
+        IEnumerable<dynamic> ExecuteSproc(string sprocName, Dictionary<string, object> parameters);
+        IEnumerable<dynamic> ExecuteCommand(string command, params object[] parameters);
+        
     }
 }
