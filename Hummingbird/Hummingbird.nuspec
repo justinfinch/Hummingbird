@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Hummingbird</id>
-    <version>0.3.2.1</version>
+    <version>$version$</version>
     <title>Hummingbird</title>
     <authors>Justin Finch</authors>
     <owners>Justin Finch</owners>

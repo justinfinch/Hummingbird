@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Hummingbird.EntityFramework</id>
-    <version>0.3.2.1</version>
+    <version>$version$</version>
     <title>Hummingbird Entityframework Implementation</title>
     <authors>Justin Finch</authors>
     <owners>Justin Finch</owners>
@@ -14,7 +14,7 @@
     <projectUrl>https://github.com/justinfinch/Hummingbird/wiki</projectUrl>
     <dependencies>
       <group>
-        <dependency id="Hummingbird" version="0.3.2.0" />
+        <dependency id="Hummingbird" version="1.0.0" />
         <dependency id="EntityFramework" version="6.0.1" />
       </group>
     </dependencies>
