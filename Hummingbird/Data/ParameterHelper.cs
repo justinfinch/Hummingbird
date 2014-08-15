@@ -65,7 +65,7 @@ namespace Hummingbird.Data
             if (value is SqlParameter)
                 return value as SqlParameter;
 
-            if (value is IEnumerable)
+            if (value is ICollection)
             {
                 var list = value as IEnumerable;
                 var dataTable = new DataTable();
