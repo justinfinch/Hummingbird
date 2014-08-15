@@ -36,23 +36,39 @@ namespace Hummingbird.EntityFramework
                     (current, include) => current.Include(include));
             }
 
-            //results.AsExpandable().Where(query);
-
             return results.ToList();
         }
 
-        //public IPager<T> FindPage(Expression<Func<T, bool>> query, int offset, int pageSize, params Expression<Func<T, object>>[] includes)
-        //{
-        //    IQueryable<T> results = _context.Set<T>().Where(query).Take(pageSize).Skip(offest * pageSize);
+        public IPagedResults<T> FindPage<TSortKey>(IPagedRequest<T, TSortKey> pagedRequest, params Expression<Func<T, object>>[] includes)
+        {
+            if(pagedRequest.KeySelector == null)
+                throw new ArgumentException("Order By must be set for a paged result set.  Call the OrderBy method on the PagedRequest to set.");
 
-        //    if (includes != null && includes.Length > 0)
-        //    {
-        //        results = includes.Aggregate(results,
-        //            (current, include) => current.Include(include));
-        //    }
+            //Build the simple query
+            IQueryable<T> query = _context.Set<T>().Where(pagedRequest.QueryExpression);
+            
+            if (pagedRequest.Comparer != null)
+            {
+                query = query.OrderBy(pagedRequest.KeySelector, pagedRequest.Comparer);
+            }
+            else
+            {
+                query = query.OrderBy(pagedRequest.KeySelector);
+            }
 
-        //    return results.ToList();
-        //}
+            //Get a count of matching records
+            int totalCount = query.Count();
+
+            query = query.Skip((pagedRequest.PageNumber - 1) * pagedRequest.PageSize).Take(pagedRequest.PageSize);
+
+
+            if (includes != null && includes.Length > 0)
+            {
+                query = includes.Aggregate(query, (current, include) => current.Include(include));
+            }
+
+            return new PagedResults<T>(query.ToList(), pagedRequest.PageSize, pagedRequest.PageNumber, totalCount);
+        }
 
         public IQueryable<T> Query(params Expression<Func<T, object>>[] includes)
         {
@@ -116,6 +132,9 @@ namespace Hummingbird.EntityFramework
         {
             _context.Dispose();
         }
+
+
+        
     }
 }
 

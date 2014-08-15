@@ -31,5 +31,17 @@ namespace Sample.Employees.Data
         {
             return _employeeDataProvider.Find(e => e.Number == number).FirstOrDefault();
         }
+
+
+        public IPagedResults<Employee> Search(string firstName,  int pageSize, int pageIndex)
+        {
+            var pagedRequest = new PagedRequest<Employee, DateTime>()
+                .Query(e => e.FirstName.StartsWith(firstName))
+                .Page(pageIndex)
+                .WithSize(pageSize)
+                .OrderBy(e => e.CreatedDate);
+
+            return _employeeDataProvider.FindPage(pagedRequest);
+        }
     }
 }

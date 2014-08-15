@@ -15,7 +15,7 @@ using System.Web.Http;
 
 namespace Sample.WebApi.Controllers
 {
-    [RoutePrefix("api/1/orders")]
+    [RoutePrefix("api/orders")]
     public class OrderController : ApiController
     {
         private readonly IOrderRepository _orderRepo;
@@ -45,7 +45,7 @@ namespace Sample.WebApi.Controllers
         public IEnumerable<OrderDto> UseDynaicSproc()
         {
             //DON"T DO THIS IN THE CONTROLLER, JUST AN EXAMPLE
-            dynamic results =_dynamicDataProvider.Execute("OrdersGet", new
+            dynamic results =_dynamicDataProvider.ExecuteSproc("OrdersGet", new
             {
                 Total = 200M
             });

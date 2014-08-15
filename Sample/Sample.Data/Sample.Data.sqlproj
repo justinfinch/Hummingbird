@@ -62,6 +62,7 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="StoredProcs" />
+    <Folder Include="PostDeploy" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Employee.sql" />
@@ -74,5 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Local.publish.xml" />
+    <PostDeploy Include="PostDeploy\Script.PostDeploy.sql" />
+    <None Include="PostDeploy\Sample.Data.sql" />
   </ItemGroup>
 </Project>

@@ -52,6 +52,8 @@
     <Compile Include="Data\DynamicDataProvider.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IObjectWithState.cs" />
+    <Compile Include="Data\IPagedRequest.cs" />
+    <Compile Include="Data\IPagedResults.cs" />
     <Compile Include="Data\IQueryableDataProvider.cs" />
     <Compile Include="Data\IQueryableExtensions.cs" />
     <Compile Include="Data\IDynamicDataProvider.cs" />
@@ -59,6 +61,8 @@
     <Compile Include="Data\IUnitOfWorkFactory.cs" />
     <Compile Include="Data\Massive.cs" />
     <Compile Include="Data\ObjectState.cs" />
+    <Compile Include="Data\PagedRequest.cs" />
+    <Compile Include="Data\PagedResults.cs" />
     <Compile Include="Data\ParameterHelper.cs" />
     <Compile Include="Data\PredicateBuilder.cs" />
     <Compile Include="Data\UnitOfWork.cs" />

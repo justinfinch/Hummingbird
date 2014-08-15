@@ -27,7 +27,7 @@ namespace Sample.Orders.Data
             if(orderTotal.HasValue)
                 query = query.Or(p => p.Total >= orderTotal.Value);
 
-            return _ordersDataProvider.Find(query, o => o.LineItems);
+            return _ordersDataProvider.Find(query);
         }
 
         public IEnumerable<Order> GetCustomerOrders(string customerId)

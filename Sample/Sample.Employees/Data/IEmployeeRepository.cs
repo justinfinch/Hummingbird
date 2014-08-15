@@ -1,4 +1,5 @@
-﻿using Sample.Employees.Domain;
+﻿using Hummingbird.Data;
+using Sample.Employees.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Sample.Employees.Data
     {
         Employee Save(Employee employee);
         IEnumerable<Employee> GetAll();
+        IPagedResults<Employee> Search(string firstName, int pageSize, int pageIndex);
         Employee GetByNumber(int number);
     }
 }
