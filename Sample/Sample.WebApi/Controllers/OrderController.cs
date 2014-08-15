@@ -66,6 +66,39 @@ namespace Sample.WebApi.Controllers
             return response;
         }
 
+        [GET("witharraysproc"), HttpGet]
+        public IEnumerable<OrderDto> UseDynaicSprocWithArray()
+        {
+            //DON"T DO THIS IN THE CONTROLLER, JUST AN EXAMPLE
+            //dynamic results = _dynamicDataProvider.ExecuteSproc("OrdersGetByIds", new
+            //{
+            //    Ids = new List<int> { 1, 3, 4, 5, 12}
+            //});
+
+            var parameters = new Dictionary<string, object>()
+            {
+                {"Ids", new List<int> {1, 3, 4, 5, 12}}
+            };
+
+            dynamic results = _dynamicDataProvider.ExecuteSproc("OrdersGetByIds", parameters);
+
+            var response = new Collection<OrderDto>();
+
+            if (results != null)
+            {
+                foreach (dynamic result in results)
+                {
+                    var orderDto = new OrderDto();
+                    orderDto.EmployeeNumber = result.EmpNum;
+                    orderDto.Total = result.Total;
+                    orderDto.Id = result.Id;
+                    response.Add(orderDto);
+                }
+            }
+
+            return response;
+        }
+
         [POST("")]
         public Order PlaceOrder(OrderDto order) //TODO: SHould be a dto
         {

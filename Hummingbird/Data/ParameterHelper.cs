@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -24,7 +26,7 @@ namespace Hummingbird.Data
 
                     parameterNames.Add(name);
 
-                    parameterValues.Add(new SqlParameter(name, value ?? DBNull.Value));
+                    parameterValues.Add(GetSqlParameter(name, value));
                 }
             }
 
@@ -48,7 +50,7 @@ namespace Hummingbird.Data
 
                     parameterNames.Add(name);
 
-                    parameterValues.Add(new SqlParameter(name, value ?? DBNull.Value));
+                    parameterValues.Add(GetSqlParameter(name, value));
                 }
             }
 
@@ -56,6 +58,45 @@ namespace Hummingbird.Data
                 storedProcedure += " " + string.Join(", ", parameterNames);
 
             return new Tuple<string, object[]>(storedProcedure, parameterValues.ToArray());
+        }
+
+        private static SqlParameter GetSqlParameter(string name, object value)
+        {
+            if (value is SqlParameter)
+                return value as SqlParameter;
+
+            if (value is IEnumerable)
+            {
+                var list = value as IEnumerable;
+                var dataTable = new DataTable();
+                bool isFirst = true;
+                string parameterTypeName = null;
+
+                foreach (var listItem in list)
+                {
+                    if (isFirst)
+                    {
+                        var listItemType = listItem.GetType();
+                        parameterTypeName = listItemType.Name.ToUpper() + "ListType";
+                        dataTable.Columns.Add(listItemType.Name.ToUpper() + "Value", listItemType);
+                        isFirst = false;
+                    }
+                    
+                    dataTable.Rows.Add(listItem);
+                }
+                    
+
+                return new SqlParameter
+                {
+                    ParameterName = name,
+                    SqlDbType = SqlDbType.Structured,
+                    Direction = ParameterDirection.Input,
+                    TypeName = parameterTypeName,
+                    Value = dataTable
+                };
+            }
+
+            return new SqlParameter(name, value ?? DBNull.Value);
         }
 
     }
