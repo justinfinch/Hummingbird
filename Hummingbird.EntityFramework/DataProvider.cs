@@ -49,11 +49,27 @@ namespace Hummingbird.EntityFramework
             
             if (pagedRequest.Comparer != null)
             {
-                query = query.OrderBy(pagedRequest.KeySelector, pagedRequest.Comparer);
+                switch (pagedRequest.SortDirection)
+                {
+                    case SortDirection.Ascending:
+                        query = query.OrderBy(pagedRequest.KeySelector, pagedRequest.Comparer);
+                        break;
+                    default:
+                        query = query.OrderByDescending(pagedRequest.KeySelector, pagedRequest.Comparer);
+                        break;
+                }
             }
             else
             {
-                query = query.OrderBy(pagedRequest.KeySelector);
+                switch (pagedRequest.SortDirection)
+                {
+                    case SortDirection.Ascending:
+                        query = query.OrderBy(pagedRequest.KeySelector);
+                        break;
+                    default:
+                        query = query.OrderByDescending(pagedRequest.KeySelector);
+                        break;
+                }
             }
 
             //Get a count of matching records

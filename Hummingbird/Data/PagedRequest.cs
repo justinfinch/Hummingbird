@@ -21,6 +21,13 @@ namespace Hummingbird.Data
 
         public IComparer<TSortKey> Comparer { get; private set; }
 
+        public SortDirection SortDirection { get; private set; }
+
+        public PagedRequest()
+        {
+            SortDirection = SortDirection.Ascending;
+        }
+
         public IPagedRequest<T, TSortKey> Page(int pageIndex)
         {
             PageNumber = pageIndex;
@@ -46,6 +53,16 @@ namespace Hummingbird.Data
             return this;
         }
 
-        
+        public IPagedRequest<T, TSortKey> Ascending()
+        {
+            SortDirection = SortDirection.Ascending;
+            return this;
+        }
+
+        public IPagedRequest<T, TSortKey> Descending()
+        {
+            SortDirection = SortDirection.Descending;
+            return this;
+        }
     }
 }

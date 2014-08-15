@@ -35,11 +35,11 @@ namespace Sample.Employees.Data
 
         public IPagedResults<Employee> Search(string firstName,  int pageSize, int pageIndex)
         {
-            var pagedRequest = new PagedRequest<Employee, DateTime>()
+            var pagedRequest = new PagedRequest<Employee, string>()
                 .Query(e => e.FirstName.StartsWith(firstName))
                 .Page(pageIndex)
                 .WithSize(pageSize)
-                .OrderBy(e => e.CreatedDate);
+                .OrderBy(e => e.LastName);
 
             return _employeeDataProvider.FindPage(pagedRequest);
         }

@@ -15,10 +15,13 @@ namespace Hummingbird.Data
         Expression<Func<T, bool>> QueryExpression { get; }
         Expression<Func<T, TSortKey>> KeySelector { get; }
         IComparer<TSortKey> Comparer { get; }
+        SortDirection SortDirection { get; }
 
         IPagedRequest<T, TSortKey> Page(int pageIndex);
         IPagedRequest<T, TSortKey> WithSize(int pageSize);
         IPagedRequest<T, TSortKey> Query(Expression<Func<T, bool>> query);
         IPagedRequest<T, TSortKey> OrderBy(Expression<Func<T, TSortKey>> keySelector, IComparer<TSortKey> comparer = null);
+        IPagedRequest<T, TSortKey> Ascending();
+        IPagedRequest<T, TSortKey> Descending();
     }
 }

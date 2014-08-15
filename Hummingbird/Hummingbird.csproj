@@ -65,6 +65,7 @@
     <Compile Include="Data\PagedResults.cs" />
     <Compile Include="Data\ParameterHelper.cs" />
     <Compile Include="Data\PredicateBuilder.cs" />
+    <Compile Include="Data\SortDirection.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Data\UnitOfWorkFactory.cs" />
     <Compile Include="Domain\Entity.cs" />
